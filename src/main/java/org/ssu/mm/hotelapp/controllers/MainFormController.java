@@ -1,9 +1,14 @@
 package org.ssu.mm.hotelapp.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.text.Text;
 import org.ssu.mm.hotelapp.entities.*;
+import org.ssu.mm.hotelapp.services.ClientService;
 import org.ssu.mm.hotelapp.services.XmlDataReader;
 import org.ssu.mm.hotelapp.services.XmlDataWriter;
+import org.ssu.mm.hotelapp.utils.StringUtils;
+import org.ssu.mm.hotelapp.utils.Utils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -13,6 +18,15 @@ import java.util.UUID;
 
 // класс, который обрабатывает действия на главном окне
 public class MainFormController {
+	@FXML private Text clientFirstName;
+	@FXML private Text clientLastName;
+	@FXML private Text clientMiddleName;
+	@FXML private Text clientPassport;
+	@FXML private Text clientComment;
+
+	private final static ClientService clientService = new ClientService();
+
+
 	public void clickBigButton(ActionEvent event) throws IOException {
 		XmlDataWriter dataWriter = XmlDataWriter.getInstance();
 
@@ -51,6 +65,18 @@ public class MainFormController {
 		client2.setPassport(passport);
 		client2.setComment("Second client");
 
+		Room room2 = new Room();
+		room2.setRoomId(UUID.randomUUID().toString());
+		room2.setCapacity(1);
+		room2.setRoomNumber(101);
+		room2.setRoomPrice(BigDecimal.valueOf(300,3));
+		room2.setConveniences(Conveniences.ECONOMY);
+
+		HotelAccommodation hotelAccommodation2 = new HotelAccommodation();
+		hotelAccommodation2.setId(UUID.randomUUID().toString());
+		hotelAccommodation2.setClient(client2);
+		hotelAccommodation2.setRoom(room2);
+
 		List<Client> clients = new ArrayList<>();
 		clients.add(client);
 		clients.add(client2);
@@ -70,4 +96,20 @@ public class MainFormController {
 		HotelAccommodation hotelAccommodation = xmlDataReader.load(HotelAccommodation.class, "hotelAccommodations.xml");
 		System.out.println(hotelAccommodation);
 	}
+
+	public void createClient(ActionEvent event) {
+		Client client = new Client();
+		Utils.addIfNotEmpty(client::setFirstName, clientFirstName.getText());
+		Utils.addIfNotEmpty(client::setMiddleName, clientMiddleName.getText());
+		Utils.addIfNotEmpty(client::setLastName, clientLastName.getText());
+		Utils.addIfNotEmpty(client::setComment, clientComment.getText());
+		String passportSeries = clientPassport.getText();
+		if (!StringUtils.isEmpty(passportSeries)) {
+			Passport passport = new Passport();
+			passport.setSeries(Integer.parseInt(passportSeries));
+			client.setPassport(passport);
+		}
+		clientService.save(client);
+	}
+
 }

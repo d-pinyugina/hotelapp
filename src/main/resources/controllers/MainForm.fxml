@@ -1,22 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFE0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ssu.mm.hotelapp.controllers.MainFormController">
+<AnchorPane prefHeight="615.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ssu.mm.hotelapp.controllers.MainFormController">
    <children>
-      <AnchorPane layoutY="85.0" prefHeight="315.0" prefWidth="600.0" style="-fx-background-color: #FFFACD;">
-         <children>
-            <Button layoutX="497.0" layoutY="12.0" mnemonicParsing="false" onAction="#clickBigButton" text="BIG BUTTON" />
-            <Button layoutX="546.0" layoutY="39.0" mnemonicParsing="false" onAction="#loadClient" text="Load" />
-         </children>
-      </AnchorPane>
-      <Label alignment="TOP_LEFT" layoutX="32.0" layoutY="35.0" opacity="0.85" prefHeight="27.0" prefWidth="345.0" text="HotelApp" textAlignment="CENTER" textFill="#575146" textOverrun="CLIP">
-         <font>
-            <Font name="Trebuchet MS" size="38.0" />
-         </font>
-      </Label>
+      <MenuBar prefHeight="29.0" prefWidth="800.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane layoutY="25.0" prefHeight="590.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Размещение">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="247.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;">
+                     <children>
+                        <TableView layoutX="1.0" prefHeight="257.0" prefWidth="800.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn id="Client" prefWidth="135.0" text="Клиент" />
+                            <TableColumn id="Room" prefWidth="71.0" text="Номер" />
+                              <TableColumn id="Chek-in" prefWidth="141.0" text="Дата заселения" />
+                              <TableColumn id="Check-out" prefWidth="144.0" text="Дата освобождения" />
+                              <TableColumn id="Comment" prefWidth="163.0" text="Комментарий" />
+                              <TableColumn minWidth="0.0" prefWidth="127.0" text=" Сумма, руб" />
+                          </columns>
+                        </TableView>
+                        <VBox layoutX="8.0" layoutY="256.0" prefHeight="298.0" prefWidth="660.0">
+                           <children>
+                              <GridPane prefHeight="314.0" prefWidth="660.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="143.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="518.0" minWidth="10.0" prefWidth="517.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Клиент">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Номер" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Дата заселения" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Дата освобождения" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Комментарий" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Сумма, руб." GridPane.rowIndex="5">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox prefHeight="27.0" prefWidth="536.0" GridPane.columnIndex="1" />
+                                    <ComboBox prefHeight="27.0" prefWidth="519.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <Button layoutX="708.0" layoutY="319.0" mnemonicParsing="false" text="Изменить" />
+                        <Button layoutX="708.0" layoutY="365.0" mnemonicParsing="false" text="Удалить" />
+                        <Button layoutX="708.0" layoutY="414.0" mnemonicParsing="false" text="Добавить" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Клиенты">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;">
+                     <children>
+                        <TableView prefHeight="262.0" prefWidth="800.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn prefWidth="185.0" text="Фамилия" />
+                            <TableColumn prefWidth="90.0" text="Имя" />
+                              <TableColumn prefWidth="156.0" text="Отчество" />
+                              <TableColumn prefWidth="185.0" text="Паспортные данные" />
+                              <TableColumn minWidth="9.0" prefWidth="182.0" text="Комментарий" />
+                          </columns>
+                        </TableView>
+                        <VBox layoutX="6.0" layoutY="262.0" prefHeight="292.0" prefWidth="668.0">
+                           <children>
+                              <GridPane prefHeight="306.0" prefWidth="668.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="147.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="522.0" minWidth="10.0" prefWidth="521.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Фамилия">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Имя" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Отчество" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Паспортные данные" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Комментарий" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="clientLastName" GridPane.columnIndex="1" />
+                                    <TextField fx:id="clientFirstName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="clientMiddleName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="clientPassport" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="clientComment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <Button layoutX="711.0" layoutY="338.0" mnemonicParsing="false" text="Изменить" />
+                        <Button layoutX="711.0" layoutY="381.0" mnemonicParsing="false" text="Удалить" />
+                        <Button layoutX="711.0" layoutY="422.0" mnemonicParsing="false" onAction="#createClient" text="Добавить" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Номера">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="247.0" prefWidth="200.0" style="-fx-background-color: #DCDCDC;">
+                     <opaqueInsets>
+                        <Insets top="1.0" />
+                     </opaqueInsets>
+                     <children>
+                        <TableView prefHeight="266.0" prefWidth="800.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn prefWidth="31.0" text="№" />
+                            <TableColumn prefWidth="114.0" text="Номер" />
+                              <TableColumn prefWidth="115.0" text="Вместимость" />
+                              <TableColumn prefWidth="126.0" text="Комфортность" />
+                              <TableColumn minWidth="2.0" prefWidth="115.0" text="Цена" />
+                              <TableColumn minWidth="4.0" prefWidth="298.0" text="Комментарий" />
+                          </columns>
+                        </TableView>
+                        <VBox layoutX="6.0" layoutY="266.0" prefHeight="293.0" prefWidth="666.0">
+                           <children>
+                              <GridPane prefHeight="299.0" prefWidth="666.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="108.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="558.0" minWidth="10.0" prefWidth="558.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Номер">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Вместимость" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Комфортность" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Цена" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Комментарий" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox prefHeight="27.0" prefWidth="586.0" GridPane.columnIndex="1" />
+                                    <ComboBox prefHeight="27.0" prefWidth="573.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <ComboBox prefHeight="27.0" prefWidth="582.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <ComboBox prefHeight="27.0" prefWidth="627.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <Button layoutX="710.0" layoutY="340.0" mnemonicParsing="false" text="Изменить" />
+                        <Button layoutX="710.0" layoutY="386.0" mnemonicParsing="false" text="Удалить" />
+                        <Button layoutX="710.0" layoutY="427.0" mnemonicParsing="false" text="Добавить" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+         <opaqueInsets>
+            <Insets bottom="1.0" top="1.0" />
+         </opaqueInsets>
+      </TabPane>
    </children>
+   <opaqueInsets>
+      <Insets bottom="1.0" top="1.0" />
+   </opaqueInsets>
 </AnchorPane>
