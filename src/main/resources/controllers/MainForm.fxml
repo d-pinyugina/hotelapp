@@ -158,18 +158,18 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="clientLastName" GridPane.columnIndex="1" />
-                                    <TextField fx:id="clientFirstName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField fx:id="clientMiddleName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField fx:id="clientPassport" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField fx:id="clientComment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField GridPane.columnIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>
                         </VBox>
                         <Button layoutX="711.0" layoutY="338.0" mnemonicParsing="false" text="Изменить" />
                         <Button layoutX="711.0" layoutY="381.0" mnemonicParsing="false" text="Удалить" />
-                        <Button layoutX="711.0" layoutY="422.0" mnemonicParsing="false" onAction="#createClient" text="Добавить" />
+                        <Button layoutX="711.0" layoutY="422.0" mnemonicParsing="false"  text="Добавить" />
                      </children>
                   </AnchorPane>
             </content>

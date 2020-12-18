@@ -94,13 +94,12 @@ public class HotelAccommodation {
 
 	@Override
 	public String toString() {
-		return "HotelAccommodation{" +
-				"id='" + id + '\'' +
-				", client=" + client +
-				", room=" + room +
-				", checkIn=" + checkIn +
-				", checkOut=" + checkOut +
-				", description='" + description + '\'' +
-				'}';
+		return "HotelAccommodation \n" +
+				"Id: " + id + "\n" +
+				client +
+				room +
+				"CheckIn: " + checkIn + "\n" +
+				"CheckOut: " + checkOut + "\n" +
+				"Description: " + description + "\n";
 	}
 }

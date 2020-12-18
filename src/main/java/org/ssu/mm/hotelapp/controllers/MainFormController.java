@@ -18,11 +18,11 @@ import java.util.UUID;
 
 // класс, который обрабатывает действия на главном окне
 public class MainFormController {
-	@FXML private Text clientFirstName;
-	@FXML private Text clientLastName;
-	@FXML private Text clientMiddleName;
-	@FXML private Text clientPassport;
-	@FXML private Text clientComment;
+//	@FXML private Text clientFirstName;
+//	@FXML private Text clientLastName;
+//	@FXML private Text clientMiddleName;
+//	@FXML private Text clientPassport;
+//	@FXML private Text clientComment;
 
 	private final static ClientService clientService = new ClientService();
 
@@ -96,20 +96,60 @@ public class MainFormController {
 		HotelAccommodation hotelAccommodation = xmlDataReader.load(HotelAccommodation.class, "hotelAccommodations.xml");
 		System.out.println(hotelAccommodation);
 	}
-
-	public void createClient(ActionEvent event) {
-		Client client = new Client();
-		Utils.addIfNotEmpty(client::setFirstName, clientFirstName.getText());
-		Utils.addIfNotEmpty(client::setMiddleName, clientMiddleName.getText());
-		Utils.addIfNotEmpty(client::setLastName, clientLastName.getText());
-		Utils.addIfNotEmpty(client::setComment, clientComment.getText());
-		String passportSeries = clientPassport.getText();
-		if (!StringUtils.isEmpty(passportSeries)) {
-			Passport passport = new Passport();
-			passport.setSeries(Integer.parseInt(passportSeries));
-			client.setPassport(passport);
-		}
-		clientService.save(client);
-	}
-
+//
+//	public void createClient(ActionEvent event) {
+//		Client client = new Client();
+//		Utils.addIfNotEmpty(client::setFirstName, clientFirstName.getText());
+//		Utils.addIfNotEmpty(client::setMiddleName, clientMiddleName.getText());
+//		Utils.addIfNotEmpty(client::setLastName, clientLastName.getText());
+//		Utils.addIfNotEmpty(client::setComment, clientComment.getText());
+//		String passportSeries = clientPassport.getText();
+//		if (!StringUtils.isEmpty(passportSeries)) {
+//			Passport passport = new Passport();
+//			passport.setSeries(Integer.parseInt(passportSeries));
+//			client.setPassport(passport);
+//		}
+//		clientService.save(client);
+//	}
+//
+//
+//	public Text getClientFirstName() {
+//		return clientFirstName;
+//	}
+//
+//	public void setClientFirstName(Text clientFirstName) {
+//		this.clientFirstName = clientFirstName;
+//	}
+//
+//	public Text getClientLastName() {
+//		return clientLastName;
+//	}
+//
+//	public void setClientLastName(Text clientLastName) {
+//		this.clientLastName = clientLastName;
+//	}
+//
+//	public Text getClientMiddleName() {
+//		return clientMiddleName;
+//	}
+//
+//	public void setClientMiddleName(Text clientMiddleName) {
+//		this.clientMiddleName = clientMiddleName;
+//	}
+//
+//	public Text getClientPassport() {
+//		return clientPassport;
+//	}
+//
+//	public void setClientPassport(Text clientPassport) {
+//		this.clientPassport = clientPassport;
+//	}
+//
+//	public Text getClientComment() {
+//		return clientComment;
+//	}
+//
+//	public void setClientComment(Text clientComment) {
+//		this.clientComment = clientComment;
+//	}
 }

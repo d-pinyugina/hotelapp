@@ -26,4 +26,24 @@ public class ClientsList {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
+
+	public void add(Client client) {
+		clients.add(client);
+	}
+
+	public void remove(Client client) {
+		clients.remove(client);
+	}
+
+	public void remove(int index) {
+		clients.remove(index);
+	}
+
+	public Client get(int index) {
+		return clients.get(index);
+	}
+
+	public int size() {
+		return clients.size();
+	}
 }
