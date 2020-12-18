@@ -36,4 +36,16 @@ public class HotelAccommodationList {
 	public void remove(HotelAccommodation hotelAccommodation) {
 		hotelAccommodations.remove(hotelAccommodation);
 	}
+
+	public void remove(int index) {
+		hotelAccommodations.remove(index);
+	}
+
+	public HotelAccommodation get(int index) {
+		return hotelAccommodations.get(index);
+	}
+
+	public int size() {
+		return hotelAccommodations.size();
+	}
 }

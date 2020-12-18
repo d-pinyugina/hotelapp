@@ -17,9 +17,7 @@ public class ConsoleMain {
 
 	public static void main(String[] args) throws IOException {
 		clientsProcessing();
-
-		writeHotelAccommodations();
-		readHotelAccommodations();
+		hotelAccommodationsProcessing();
 	}
 
 
@@ -37,6 +35,22 @@ public class ConsoleMain {
 		System.out.println("Get info about last client:");
 		Client lastClient = clientsList.get(clientsList.size() - 1);
 		System.out.println(lastClient);
+		System.out.println("Edit client name and print");
+		lastClient.setFirstName("Владимир");
+		System.out.println(lastClient);
+	}
+
+	private static void hotelAccommodationsProcessing() throws IOException {
+		HotelAccommodationList hotelAccommodationList = writeHotelAccommodations();
+		System.out.println("Show hotel accommodation list:");
+		hotelAccommodationList.getHotelAccommodations().forEach(System.out::println);
+		save(hotelAccommodationList,"hotelAccommodations.xml");
+		System.out.println("HotelAccomodation successfully saved into file");
+		hotelAccommodationList = readHotelAccommodations();
+		System.out.println("HotelAccomodations successfully loaded from file");
+		System.out.println("Remove first hotelAccomodation and show HotelAccommodation list:");
+		hotelAccommodationList.remove(0);
+		hotelAccommodationList.getHotelAccommodations().forEach(System.out::println);
 	}
 
 	private static ClientsList createClients() {
@@ -58,16 +72,16 @@ public class ConsoleMain {
 		return new ClientsList(clients);
 	}
 
-	private static void writeHotelAccommodations() throws IOException {
+	private static HotelAccommodationList writeHotelAccommodations() throws IOException {
 		Client client1 = createClient("Grigory", "Ivanov", "Ivanovich", 12345678, "First client");
 		Room room1 = createRoom(2, 100, 500, Conveniences.COMFORT);
 		HotelAccommodation hotelAccommodation1 = createHotelAccommodation(client1, room1);
 
-		Client client2 = createClient("Grigory", "Ivanov", "Ivanovich", 12345678, "First client");
-		Room room2 = createRoom(1, 101, 300, Conveniences.ECONOMY);
+		Client client2 = createClient("Ivan", "Ivanov", "Petrovich", 12300678, "Second client");
+		Room room2 = createRoom(1, 103, 700, Conveniences.ECONOMY);
 		HotelAccommodation hotelAccommodation2 = createHotelAccommodation(client2, room2);
 
-		Client client3 = createClient("Grigory", "Ivanov", "Ivanovich", 12345678, "First client");
+		Client client3 = createClient("Sergey", "Sergeev", "Ivanovich", 123978, "Third client");
 		Room room3 = createRoom(1, 102, 500, Conveniences.COMFORT);
 		HotelAccommodation hotelAccommodation3 = createHotelAccommodation(client3, room3);
 
@@ -77,6 +91,8 @@ public class ConsoleMain {
 		hotelAccommodations.add(hotelAccommodation3);
 
 		xmlDataWriter.save(new HotelAccommodationList(hotelAccommodations), "hotelAccommodations.xml");
+		System.out.println("HotelAccommodations successfully created");
+		return new HotelAccommodationList(hotelAccommodations);
 	}
 
 
@@ -119,9 +135,10 @@ public class ConsoleMain {
 		return xmlDataReader.load(ClientsList.class, "clients.xml");
 	}
 
-	private static void readHotelAccommodations() throws IOException {
+	private static HotelAccommodationList readHotelAccommodations() throws IOException {
 		HotelAccommodationList hotelAccommodations = xmlDataReader.load(HotelAccommodationList.class, "hotelAccommodations.xml");
 		hotelAccommodations.getHotelAccommodations().forEach(System.out::println);
+		return hotelAccommodations;
 	}
 
 	private static <T> void save(T list, String fileName) throws IOException {

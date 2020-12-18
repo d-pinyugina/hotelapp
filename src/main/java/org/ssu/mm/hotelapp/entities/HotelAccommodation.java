@@ -8,7 +8,7 @@ import java.util.Objects;
  * проживание в отеле
  **/
 @XmlRootElement
-public class HotelAccommodation {
+public class HotelAccommodation extends HotelAccommodationList {
 	private String id;
 	private Client client;
 	private Room room;
